@@ -8,7 +8,7 @@ export default function Callback() {
   useEffect(() => {
     const code = new URLSearchParams(window.location.search).get('code');
     if (code) {
-      fetch('http://localhost:3000/api/v1/auth/github', {
+      fetch('https://insighta-plus-backend-elijah-hash74986-5ek70nh0.leapcell.dev/api/v1/auth/github', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code }),
@@ -27,7 +27,7 @@ export default function Callback() {
 
   return (
     <div className="callback-page">
-      <h2>{error || 'Logging you in...'}</h2>
+      <h2>{error || 'Signing in with GitHub...'}</h2>
     </div>
   );
 }

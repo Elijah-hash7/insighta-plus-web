@@ -13,7 +13,7 @@ export default function Dashboard() {
 
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/v1/auth/me', {
+    fetch('https://insighta-plus-backend-elijah-hash74986-5ek70nh0.leapcell.dev/api/v1/auth/me', {
       credentials: 'include',
     }).then(r => r.json()).then(d => { if (d.status === 'success') setUser(d.data); });
   }, [navigate]);
@@ -29,7 +29,7 @@ export default function Dashboard() {
     if (country) params.set('country_id', country.toUpperCase());
     params.set('limit', '20');
 
-    fetch(`http://localhost:3000/api/v1/profiles?${params}`, {
+    fetch(`https://insighta-plus-backend-elijah-hash74986-5ek70nh0.leapcell.dev/api/v1/profiles?${params}`, {
       credentials: 'include',
     }).then(r => r.json()).then(d => {
       if (d.status === 'success') {
@@ -42,7 +42,7 @@ export default function Dashboard() {
   const handleSearch = () => {
     if (!searchQuery.trim()) return;
 
-    fetch(`http://localhost:3000/api/v1/profiles/search?q=${encodeURIComponent(searchQuery)}&limit=20`, {
+    fetch(`https://insighta-plus-backend-elijah-hash74986-5ek70nh0.leapcell.dev/api/v1/profiles/search?q=${encodeURIComponent(searchQuery)}&limit=20`, {
       credentials: 'include',
     }).then(r => r.json()).then(d => {
       if (d.status === 'success') {
@@ -57,7 +57,7 @@ export default function Dashboard() {
     if (gender) params.set('gender', gender);
     if (country) params.set('country_id', country.toUpperCase());
 
-    fetch(`http://localhost:3000/api/v1/export/csv?${params}`, {
+    fetch(`https://insighta-plus-backend-elijah-hash74986-5ek70nh0.leapcell.dev/api/v1/export/csv?${params}`, {
       credentials: 'include',
     }).then(r => r.blob()).then(blob => {
       const url = window.URL.createObjectURL(blob);
@@ -69,7 +69,7 @@ export default function Dashboard() {
   };
 
   const handleLogout = () => {
-    fetch('http://localhost:3000/api/v1/auth/logout', {
+    fetch('https://insighta-plus-backend-elijah-hash74986-5ek70nh0.leapcell.dev/api/v1/auth/logout', {
       method: 'POST',
       credentials: 'include'
     }).then(() => navigate('/'));
